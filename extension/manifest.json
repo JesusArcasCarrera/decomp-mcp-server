@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "decomp.me Bridge",
+  "version": "1.0.0",
+  "description": "Bridge between Claude MCP and decomp.me for automated decompilation",
+  "permissions": ["activeTab", "tabs", "http://localhost/*", "https://decomp.me/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://decomp.me/scratch/*", "http://localhost/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_security_policy": "script-src 'self'; object-src 'self'; connect-src 'self' ws://127.0.0.1:9400 ws://localhost:9400;",
+  "icons": {
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
